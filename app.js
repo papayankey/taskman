@@ -1,12 +1,11 @@
 const express = require("express");
+const userRoute = require("./routes/user");
 
 // app
 const app = express();
 
-// route
-app.get("/", (req, res) => {
-  res.send("Taskma");
-})
+// routes
+app.use("/", userRoute);
 
 // listen to port
 app.listen(4000, () => {

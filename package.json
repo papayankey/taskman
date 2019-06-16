@@ -1,0 +1,26 @@
+{
+  "name": "taskman",
+  "version": "1.0.0",
+  "description": "Taskman is a task management app which helps to manage tasks of the day.",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iambenbright/taskman.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iambenbright/taskman/issues"
+  },
+  "homepage": "https://github.com/iambenbright/taskman#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}

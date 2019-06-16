@@ -3,7 +3,7 @@ const path = require("path");
 
 const Database = require("./models/database");
 const schema = require("./models/schema");
-const UserModel = require("./models/userModel");
+const UserModel = require("./models/user");
 const userRoute = require("./routes/user");
 
 // environment variables

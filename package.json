@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/iambenbright/taskman#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pug": "^2.0.3"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"

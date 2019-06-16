@@ -1,0 +1,167 @@
+:root {
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  --primary-color: aquamarine;
+  --primary-color-light: rgba(127, 255, 212, 0.103);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+h2 {
+  margin: 0;
+}
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+
+header {
+  height: 60px;
+  background-color: var(--primary-color);
+  box-shadow: 0 2px 5px rgb(96, 190, 159);
+}
+
+header h2 {
+  text-shadow: 0 1px 2px green;
+  cursor: pointer;
+}
+
+header h2 a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.header {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header nav {
+  height: 100%;
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header nav a {
+  text-decoration: none;
+  color: green;
+  height: 100%;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header nav a:hover {
+  background-color: rgb(96, 190, 159);
+  color: #fff;
+  transition: background-color 0.5s;
+}
+
+.gap-fix {
+  height: 60px;
+}
+
+/* form  */
+
+form {
+  width: 400px;
+  margin: 60px auto;
+}
+
+.form-header {
+  margin-bottom: 3px;
+}
+
+.form-style {
+  margin-bottom: 30px;
+  width: 50px;
+  height: 5px;
+  background-color: var(--primary-color);
+}
+
+form div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+form div label {
+  margin-bottom: 8px;
+}
+
+form div input {
+  height: 35px;
+  padding-left: 15px;
+}
+
+form button {
+  padding: 8px 20px;
+  background-color: var(--primary-color);
+  color: green;
+  border-radius: 2px;
+  box-shadow: 0 1px green;
+}
+
+form button:hover {
+  background-color: rgb(96, 190, 159);
+  color: #fff;
+  /* text-shadow: 0 1px green; */
+}
+
+/* error message */
+.error-message {
+  width: 100%;
+  padding: 10px;
+  border-radius: 2px;
+  color: green;
+  background-color: var(--primary-color-light);
+  transition: all 0.25s;
+}
+
+/* reg complete */
+.reg-complete {
+  background-color: var(--primary-color-light);
+  border-radius: 4px;
+  transition: all 0.5s;
+  padding: 30px;
+  box-shadow: 0 1px 2px rgb(96, 190, 159);
+}
+
+.reg-complete a {
+  text-decoration: none;
+  background-color: var(--primary-color);
+  color: green;
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 0 1px green;
+}
+
+.reg-complete p {
+  margin-bottom: 25px;
+}

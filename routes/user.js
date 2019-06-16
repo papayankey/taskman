@@ -5,15 +5,15 @@ const router = express.Router();
 
 // GET
 router.get("/", (req, res) => {
-  res.send("<h1>Taskman</h1>");
+  res.render("index");
 })
 
 router.get("/user/register", (req, res) => {
-  res.send("<h1>Registration Page!</h1>");
+  res.render("register");
 });
 
 router.get("/user/login", (req, res) => {
-  res.send("<h1>Login Page!</h1>");
+  res.render("login");
 });
 
 

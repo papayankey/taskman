@@ -1,0 +1,18 @@
+extends index
+
+block body
+  form(method="POST")
+    h2.form-header CREATE ACCOUNT
+    div.form-style
+    if error
+      div.error-message #{error.message}
+    div
+      label(for="name") NAME
+      input(type="text" name="name" placeholder="enter name")
+    div
+      label(for="email") EMAIL
+      input(type="email" name="email" placeholder="enter email")
+    div
+      label(for="email") PASSWORD
+      input(type="password" name="password" placeholder="enter password")
+    button(type="submit") SIGN UP

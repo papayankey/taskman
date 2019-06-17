@@ -1,8 +1,8 @@
 extends index
 
 block body
-  form(method="POST")
-    h2.form-header CREATE ACCOUNT
+  form(method="POST" autocomplete="off")
+    h2.form-header #{pageTitle}
     div.form-style
     if error
       div.error-message #{error.message}
@@ -15,4 +15,4 @@ block body
     div
       label(for="email") PASSWORD
       input(type="password" name="password" placeholder="enter password")
-    button(type="submit") SIGN UP
+    button(type="submit") SUBMIT

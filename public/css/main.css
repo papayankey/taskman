@@ -148,7 +148,7 @@ form button:hover {
 .reg-complete {
   background-color: var(--primary-color-light);
   border-radius: 4px;
-  transition: all 0.5s;
+  transition: all 0.25s;
   padding: 30px;
   box-shadow: 0 1px 2px rgb(96, 190, 159);
 }

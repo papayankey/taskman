@@ -28,6 +28,8 @@ Dao.db.on("error", error => {
 
   // middlewares
   app.disable("x-powered-by");
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
   app.use(express.static(path.resolve(__dirname, "public")));
   app.set("view engine", "pug");
 

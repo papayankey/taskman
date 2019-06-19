@@ -6,23 +6,22 @@ const router = express.Router();
 
 // GET
 router.get("/", (req, res) => {
-  res.render("index", { pageId: 'Home' });
-})
+  res.render("index", { pageId: "home" });
+});
 
 router.get("/user/register", (req, res) => {
-  res.render("register", {
+  res.render("partials/content/register", {
     pageTitle: "CREATE ACCOUNT",
-    pageId: 'Register'
+    pageId: "register"
   });
 });
 
 router.get("/user/login", (req, res) => {
-  res.render("login", {
+  res.render("partials/content/login", {
     pageTitle: "ACCESS ACCOUNT",
-    pageId: 'Login'
+    pageId: "login"
   });
 });
-
 
 // POST
 router.post("/user/register", register);
@@ -30,6 +29,5 @@ router.post("/user/register", register);
 router.post("/user/login", (req, res) => {
   res.redirect("/");
 });
-
 
 module.exports = router;

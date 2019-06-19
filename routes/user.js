@@ -6,20 +6,27 @@ const router = express.Router();
 
 // GET
 router.get("/", (req, res) => {
-  res.render("index", { pageId: "home" });
+  res.render("index", { pageId: "Home" });
 });
 
 router.get("/user/register", (req, res) => {
   res.render("partials/content/register", {
-    pageTitle: "CREATE ACCOUNT",
-    pageId: "register"
+    title: "CREATE ACCOUNT",
+    pageId: "Register"
   });
 });
 
 router.get("/user/login", (req, res) => {
   res.render("partials/content/login", {
-    pageTitle: "ACCESS ACCOUNT",
-    pageId: "login"
+    title: "ACCESS ACCOUNT",
+    pageId: "Login"
+  });
+});
+
+router.get("/user/account-created", (req, res) => {
+  res.render("partials/content/register-complete", {
+    title: "Registration completed!",
+    pageId: "Registered"
   });
 });
 

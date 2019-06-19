@@ -8,9 +8,20 @@ html(lang="en")
     title Taskman
 
   body
-    include includes/navbar.pug
+    //- navbar
+    include partials/template/navbar.pug
 
-    div.gap-fix
+    //- main content
+    block content
+      .container
+        .content
+          .content-left
+            h2 Who Am I?
+            p 
+            | Taskman is an application which aids in planning tasks of the day.
+            p
+            | It allows tasks to be scheduled into the future.
+          .content-right  
+             block detail
+              h2 Here are the details!
 
-    block body
-      h1.container Welcome to Taskman!

@@ -1,0 +1,18 @@
+extends ../../index.pug
+
+block detail
+  form(class="form" method="POST" autocomplete="off")
+    h2.form-header #{pageTitle}
+    div.form-style
+    if error
+      div.error-message #{error.message}
+    div.form-group
+      label(for="name") NAME
+      input(type="text" name="name" placeholder="enter name")
+    div.form-group
+      label(for="email") EMAIL
+      input(type="email" name="email" placeholder="enter email")
+    div.form-group
+      label(for="email") PASSWORD
+      input(type="password" name="password" placeholder="enter password")
+    button(type="submit") SUBMIT

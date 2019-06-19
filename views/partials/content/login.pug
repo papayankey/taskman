@@ -2,12 +2,20 @@ extends ../../index
 
 block detail
   form(class="form" method="POST" autocomplete="off")
-    h2.form-header #{title}
-    div.form-style
-    div.form-group
+    .form-header #{title}
+    .form-style
+
+    //- flash messages
+    if errors
+      .error-messages
+        each error in errors
+          .error-message
+            p #{error.message}
+
+    .form-group
       label(for="email") EMAIL
       input(type="email" name="email" placeholder="enter email")
-    div.form-group
+    .form-group
       label(for="email") PASSWORD
       input(type="password" name="password" placeholder="enter password")
     button(type="submit") SUBMIT

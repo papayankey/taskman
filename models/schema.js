@@ -1,4 +1,6 @@
 const schema = `
+  DROP TABLE IF EXISTS Users;
+  
   CREATE TABLE IF NOT EXISTS Users ( 
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,

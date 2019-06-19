@@ -1,11 +1,16 @@
+const bcrypt = require("bcrypt");
+
 module.exports = {
   register: async function(req, res) {
     const models = req.app.locals.models;
 
     let { name, email, password } = req.body;
 
+    // hash password
+    const hashedPassword = await bcrypt.hash(password, 12);
+
     try {
-      await models.User.create(name, email, password);
+      await models.User.create(name, email, hashedPassword);
       res.status(200);
       res.redirect("./account-created");
       return;

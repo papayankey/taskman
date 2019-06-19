@@ -12,6 +12,11 @@ class UserModel {
     const sql = `SELECT * FROM Users WHERE Users.id = ?`;
     return this.dao.get(sql, param);
   }
+
+  findByEmail(param) {
+    const sql = `SELECT * FROM Users WHERE Users.email = ?`;
+    return this.dao.get(sql, param);
+  }
 }
 
 module.exports = UserModel;

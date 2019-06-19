@@ -1,9 +1,9 @@
 :root {
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  --primary-color: rgb(30, 65, 53);
-  --primary-accent: rgb(44, 95, 77);
-  --primary-color-light: rgba(127, 255, 212, 0.103);
+  --primary-color: #0d61bb;
+  --primary-accent: #0c4f97;
+  --primary-color-light: #0d61bb0c;
 }
 
 *,
@@ -24,23 +24,23 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 8px 20px;
+  padding: 10px 20px;
   background-color: var(--primary-color);
   color: #fff;
   border-radius: 2px;
 }
 
 button:hover {
-  background-color: rgb(96, 190, 159);
+  background-color: var(--primary-accent);
   color: #fff;
 }
-
-/* end of globals */
 
 .container {
   width: 960px;
   margin: 0 auto;
 }
+
+/* end of globals */
 
 header {
   height: 60px;
@@ -128,39 +128,71 @@ header .container {
   grid-template-columns: 1fr 2fr;
 }
 
+.source-code {
+  margin-top: 30px;
+}
+
+.source-code a:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.source-code a {
+  text-decoration: none;
+  color: var(--primary-color);
+  border: 0.5px solid var(--primary-color);
+  border-radius: 2px;
+  padding: 7px 10px;
+}
+
 .content-right {
   justify-self: center;
 }
 /* end of content */
 
-/* error message */
-.error-message {
-  width: 100%;
-  padding: 10px;
-  border-radius: 2px;
-  color: green;
-  background-color: var(--primary-color-light);
-  transition: all 0.25s;
-}
-
 /* reg complete */
 .reg-complete {
+  width: 400px;
   background-color: var(--primary-color-light);
   border-radius: 4px;
   transition: all 0.25s;
   padding: 30px;
-  box-shadow: 0 1px 2px rgb(96, 190, 159);
+  box-shadow: 0 1px 0 var(--primary-color);
 }
 
 .reg-complete a {
   text-decoration: none;
-  background-color: var(--primary-color);
-  color: green;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   padding: 10px;
   border-radius: 2px;
-  box-shadow: 0 1px green;
+}
+
+.reg-complete a:hover {
+  background-color: var(--primary-color);
+  color: #fff;
 }
 
 .reg-complete p {
-  margin-bottom: 25px;
+  margin-bottom: 35px;
+}
+
+/* error message */
+.error-messages {
+  width: 400px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.error-message {
+  padding: 0 20px;
+  border-radius: 2px;
+  color: #9a4b61;
+  background-color: rgba(154, 75, 97, 0.158);
+  transition: all 0.25s;
+}
+
+.error-message:not(:last-of-type) {
+  margin-bottom: 5px;
 }

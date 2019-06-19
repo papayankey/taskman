@@ -1,7 +1,8 @@
 :root {
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  --primary-color: aquamarine;
+  --primary-color: rgb(30, 65, 53);
+  --primary-accent: rgb(44, 95, 77);
   --primary-color-light: rgba(127, 255, 212, 0.103);
 }
 
@@ -12,15 +13,10 @@
 }
 
 body {
-  padding: 0;
   margin: 0;
-  width: 100vw;
-  height: 100vh;
 }
 
-h2 {
-  margin: 0;
-}
+/* globals */
 
 button {
   -webkit-appearance: none;
@@ -28,7 +24,18 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
+  padding: 8px 20px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 2px;
 }
+
+button:hover {
+  background-color: rgb(96, 190, 159);
+  color: #fff;
+}
+
+/* end of globals */
 
 .container {
   width: 960px;
@@ -37,38 +44,37 @@ button {
 
 header {
   height: 60px;
+  margin-bottom: 50px;
   background-color: var(--primary-color);
-  box-shadow: 0 2px 5px rgb(96, 190, 159);
-}
-
-header h2 {
-  text-shadow: 0 1px 2px green;
   cursor: pointer;
 }
 
-header h2 a {
+header .container {
+  height: 100%;
+}
+
+.navbar h2 a {
   text-decoration: none;
   color: #fff;
 }
 
-.header {
+.navbar {
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.header nav {
+.navbar nav {
   height: 100%;
-  width: 130px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.header nav a {
+.navbar nav a {
   text-decoration: none;
-  color: green;
+  color: #fff;
   height: 100%;
   padding: 0 10px;
   display: flex;
@@ -76,21 +82,15 @@ header h2 a {
   align-items: center;
 }
 
-.header nav a:hover {
-  background-color: rgb(96, 190, 159);
-  color: #fff;
-  transition: background-color 0.5s;
-}
-
-.gap-fix {
-  height: 60px;
+.navbar nav a:hover {
+  background-color: var(--primary-accent);
+  transition: all 0.5s;
 }
 
 /* form  */
 
-form {
+.form {
   width: 400px;
-  margin: 60px auto;
 }
 
 .form-header {
@@ -104,35 +104,34 @@ form {
   background-color: var(--primary-color);
 }
 
-form div {
+.form-group {
   width: 100%;
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
 }
 
-form div label {
+.form-group label {
   margin-bottom: 8px;
 }
 
-form div input {
+.form-group input {
   height: 35px;
   padding-left: 15px;
 }
 
-form button {
-  padding: 8px 20px;
-  background-color: var(--primary-color);
-  color: green;
-  border-radius: 2px;
-  box-shadow: 0 1px green;
+/* end of form */
+
+/* content */
+.content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
 }
 
-form button:hover {
-  background-color: rgb(96, 190, 159);
-  color: #fff;
-  /* text-shadow: 0 1px green; */
+.content-right {
+  justify-self: center;
 }
+/* end of content */
 
 /* error message */
 .error-message {

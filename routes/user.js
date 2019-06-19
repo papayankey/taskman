@@ -1,29 +1,25 @@
 const express = require("express");
-const { register } = require("../controllers/user");
+const { login, register } = require("../controllers/user");
 
 // express router
 const router = express.Router();
 
 // GET
-router.get("/", (req, res) => {
-  res.render("index", { pageId: "Home" });
-});
-
-router.get("/user/register", (req, res) => {
+router.get("/register", (req, res) => {
   res.render("partials/content/register", {
     title: "CREATE ACCOUNT",
     pageId: "Register"
   });
 });
 
-router.get("/user/login", (req, res) => {
+router.get("/login", (req, res) => {
   res.render("partials/content/login", {
     title: "ACCESS ACCOUNT",
     pageId: "Login"
   });
 });
 
-router.get("/user/account-created", (req, res) => {
+router.get("/account-created", (req, res) => {
   res.render("partials/content/register-complete", {
     title: "Registration completed!",
     pageId: "Registered"
@@ -31,10 +27,7 @@ router.get("/user/account-created", (req, res) => {
 });
 
 // POST
-router.post("/user/register", register);
-
-router.post("/user/login", (req, res) => {
-  res.redirect("/");
-});
+router.post("/register", register);
+router.post("/login", login);
 
 module.exports = router;

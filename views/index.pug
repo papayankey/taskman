@@ -1,15 +1,11 @@
 doctype html
 html(lang="en")
   head
-    meta(charset="utf-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible" content="ie=edge")
-    link(rel="stylesheet" href="/css/main.css")
-    title Taskman
+    include partials/template/head
 
   body
     //- navbar
-    include partials/template/navbar.pug
+    include partials/template/navbar
 
     //- main content
     block content
@@ -21,7 +17,9 @@ html(lang="en")
             | Taskman is an application which aids in planning tasks of the day.
             p
             | It allows tasks to be scheduled into the future.
+            .source-code
+              a(href="https://github.com/iambenbright/taskman" target="_blank") github
           .content-right  
              block detail
-              h2 Here are the details!
+              h2 Sneak Peek!
 

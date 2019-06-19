@@ -1,5 +1,5 @@
 module.exports = {
-  register: async function (req, res) {
+  register: async function(req, res) {
     const models = req.app.locals.models;
 
     let { name, email, password } = req.body;
@@ -7,10 +7,15 @@ module.exports = {
     try {
       await models.User.create(name, email, password);
       res.status(200);
-      res.render("registerRedirect", { title: "Registration Complete" });
+      res.redirect("./account-created");
+      return;
     } catch (e) {
       res.status(500);
-      res.render("registerForm", { error: { message: "Email already exist" } });
+      res.render("partials/content/register", {
+        title: "CREATE ACCOUNT",
+        pageTitle: "Register",
+        errors: [{ field: "Email", message: "Email already exist" }]
+      });
     }
   }
 };

@@ -2,7 +2,7 @@ extends ../../index
 
 block detail
   form(class="form" method="POST" autocomplete="off")
-    .form-header #{title}
+    h2.form-header #{title}
     .form-style
 
     //- flash messages
@@ -14,7 +14,7 @@ block detail
 
     .form-group
       label(for="email") EMAIL
-      input(type="email" name="email" placeholder="enter email")
+      input(type="email" name="email" placeholder="enter email" autofocus)
     .form-group
       label(for="email") PASSWORD
       input(type="password" name="password" placeholder="enter password")

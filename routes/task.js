@@ -6,7 +6,9 @@ const router = express.Router();
 
 // GET
 router.get("/", (req, res) => {
-  res.render("task");
+  res.render("task", {
+    pageId: "Task"
+  });
 });
 
 module.exports = router;

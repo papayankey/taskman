@@ -1,32 +1,78 @@
 const bcrypt = require("bcrypt");
+const Joi = require("@hapi/joi");
+const { loginSchema, registerSchema } = require("../validation/user");
 
 module.exports = {
-  register: async function(req, res) {
+  getRegister: function(req, res) {
+    res.render("partials/content/register", {
+      title: "CREATE ACCOUNT",
+      pageId: "Register"
+    });
+  },
+  getLogin: function(req, res) {
+    res.render("partials/content/login", {
+      title: "ACCESS ACCOUNT",
+      pageId: "Login"
+    });
+  },
+  getRegistrationSuccess: function(req, res) {
+    res.render("partials/content/register-complete", {
+      title: "Registration completed!",
+      pageId: "Registered"
+    });
+  },
+  postRegister: async function(req, res) {
     const models = req.app.locals.models;
 
     let { name, email, password } = req.body;
+
+    // validation
+    try {
+      await Joi.validate({ name, email, password }, registerSchema, {
+        abortEarly: false
+      });
+    } catch (e) {
+      res.render("partials/content/register", {
+        title: "CREATE ACCOUNT",
+        pageTitle: "Register",
+        errors: e.details
+      });
+      return;
+    }
 
     // hash password
     const hashedPassword = await bcrypt.hash(password, 12);
 
     try {
       await models.User.create(name, email, hashedPassword);
-      res.status(200);
       res.redirect("./account-created");
       return;
     } catch (e) {
-      res.status(500);
-      res.render("partials/content/register", {
+      res.redirect("partials/content/register", {
         title: "CREATE ACCOUNT",
         pageTitle: "Register",
-        errors: [{ field: "Email", message: "Email already exist" }]
+        errors: [{ message: '"Email" already exists' }]
       });
     }
   },
-  login: async function(req, res) {
+  postLogin: async function(req, res) {
     const models = req.app.locals.models;
 
     let { email, password } = req.body;
+
+    // validation
+    try {
+      await Joi.validate({ email, password }, loginSchema, {
+        abortEarly: false
+      });
+    } catch (e) {
+      res.render("partials/content/login", {
+        title: "ACCESS ACCOUNT",
+        pageTitle: "Login",
+        errors: e.details
+      });
+      return;
+    }
 
     try {
       const renderError = () => {
@@ -38,7 +84,7 @@ module.exports = {
         });
       };
 
-      // get user from db by email
+      // find user by email
       const user = await models.User.findByEmail(email);
 
       // error message
@@ -55,14 +101,10 @@ module.exports = {
         renderError();
         return;
       }
-      res.status(200);
       res.redirect("../task");
       return;
     } catch (e) {
-      res.status(500).json({
-        status: 500,
-        message: "Email or password incorrect"
-      });
+      renderError();
     }
   }
 };

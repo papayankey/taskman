@@ -38,24 +38,26 @@ button:hover {
 .container {
   width: 960px;
   margin: 0 auto;
+  padding: 50px 0;
 }
 
 /* end of globals */
 
 header {
   height: 60px;
-  margin-bottom: 50px;
   background-color: var(--primary-color);
   cursor: pointer;
 }
 
 header .container {
   height: 100%;
+  padding: 0;
 }
 
-.navbar h2 a {
+.navbar p a {
   text-decoration: none;
   color: #fff;
+  font-size: 24px;
 }
 
 .navbar {

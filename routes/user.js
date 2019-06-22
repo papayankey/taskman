@@ -11,12 +11,12 @@ const {
 const router = express.Router();
 
 // GET
-router.get("/register", getRegister);
+router.get("/signup", getRegister);
 router.get("/login", getLogin);
 router.get("/account-created", getRegistrationSuccess);
 
 // POST
-router.post("/register", postRegister);
+router.post("/signup", postRegister);
 router.post("/login", postLogin);
 
 module.exports = router;

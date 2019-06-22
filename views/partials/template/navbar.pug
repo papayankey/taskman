@@ -4,5 +4,10 @@ header
       p 
         a(href="/") <strong>Task</strong>man
       nav
-        a(href="/user/register") REGISTER
-        a(href="/user/login") LOGIN
+        if user
+          a(href="/user/logout") Sign out
+          a 
+            strong #{user.name}
+        else if !user
+          a(href="/user/register") Sign up
+          a(href="/user/login") Log in

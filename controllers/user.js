@@ -4,12 +4,24 @@ const { loginSchema, registerSchema } = require("../validation/user");
 
 module.exports = {
   getRegister: function(req, res) {
+    // redirect to task
+    if (req.session.user) {
+      res.redirect("../task");
+      return;
+    }
+
     res.render("partials/content/register", {
       title: "CREATE ACCOUNT",
       pageId: "Register"
     });
   },
   getLogin: function(req, res) {
+    // redirect to task
+    if (req.session.user) {
+      res.redirect("../task");
+      return;
+    }
+
     res.render("partials/content/login", {
       title: "ACCESS ACCOUNT",
       pageId: "Login"
@@ -48,7 +60,7 @@ module.exports = {
       res.redirect("./account-created");
       return;
     } catch (e) {
-      res.redirect("partials/content/register", {
+      res.render("partials/content/register", {
         title: "CREATE ACCOUNT",
         pageTitle: "Register",
         errors: [{ message: '"Email" already exists' }]
@@ -101,6 +113,14 @@ module.exports = {
         renderError();
         return;
       }
+
+      // set user session
+      req.session.user = {
+        id: user.id,
+        name: user.name
+      };
+
+      // redirect to task page
       res.redirect("../task");
       return;
     } catch (e) {

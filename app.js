@@ -50,7 +50,7 @@ Dao.db
         resave: false,
         saveUninitialized: false,
         cookie: {
-          maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
+          maxAge: 1000 * 60 * 60 * 24 * 365 // 1 yr
         }
       })
     );
@@ -61,6 +61,14 @@ Dao.db
     app.use("/", indexRoute);
     app.use("/user", userRoute);
     app.use("/task", taskRoute);
+
+    // 404
+    app.use(function(req, res, next) {
+      res.render("404", {
+        pageId: "404"
+      });
+      return;
+    });
 
     // listen to port
     app.listen(APP_PORT, () => {

@@ -198,3 +198,41 @@ header .container {
 .error-message:not(:last-of-type) {
   margin-bottom: 5px;
 }
+
+/* 404 */
+.container-404 {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-404 div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-404 h1 {
+  font-size: 160px;
+  margin: 0;
+  color: var(--primary-color);
+}
+
+.container-404 p {
+  font-size: 20px;
+  margin: 0;
+  padding: 10px;
+  border-radius: 2px;
+  background-color: #fff;
+  position: relative;
+  top: -70px;
+}
+
+.container-404 .source-code {
+  margin: 0;
+  position: relative;
+  top: -50px;
+}

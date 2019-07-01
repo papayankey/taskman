@@ -3,11 +3,63 @@ html(lang="en")
   head
     include partials/template/head
 
-  body
+  body(id="task")
+
     //- navbar
     include partials/template/navbar
 
-    //- main content
-    .container
-      h1 Welcome to tasks page!
+    .gap-fix
+
+    .wrapper
+      .container
+        .side
+          .create
+            a CREATE TASK
+          .organise
+            ul
+              li.active All
+              li Active
+              li Completed
+        div
+          if tasks.length === 0
+            .no-task-container
+              .icon
+                i.fa.fa-tasks
+              .info
+                h3 No Task
+                p what do you want to do today?
+
+          if tasks.length !== 0
+            h3 All Tasks
+            
+            .content
+              each task in tasks
+                .task(
+                    data-id=task.task_id
+                    data-text=task.task_text 
+                    data-band=task.band_hex
+                    data-completed=task.task_completed
+                    data-priority=task.priority_value
+                    style={"border-top": `2.5px solid ${task.band_hex}`}
+                )
+                  .top
+                    p #{task.task_text}
+                  .bottom
+                    - priority = task.priority_value
+                    if priority === "low"
+                      - priority = "L"
+                    if priority === "medium"
+                      - priority = "M"
+                    if priority === "high"
+                      - priority = "H"
+                    .priority #{priority}
+                    .actions
+                      .complete
+                        i.fa.fa-check
+                      .edit
+                        i.fa.fa-pencil
+                      .delete
+                        a(href=`/task/r/${task.task_id}`)
+                          i.fa.fa-remove
+              
 

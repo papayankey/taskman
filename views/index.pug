@@ -3,21 +3,32 @@ html(lang="en")
   head
     include partials/template/head
 
-  body
+  body(id="home")
     //- navbar
     include partials/template/navbar
 
+    if pageId !== "Home"
+      .gap-fix
+
     //- main content
     block content
-      .container
-        .content
-          .content-left
-            h2 Who Am I?
-            p Taskman is an application which aids in planning tasks of the day.
-            p It allows tasks to be scheduled into the future.
-            .source-code
-              a(href="https://github.com/iambenbright/taskman" target="_blank") github
-          .content-right  
-             block detail
-              h2 Sneak Peek!
-
+      if pageId === "Home"
+        .container
+          .wrapper
+            div
+              h2 Who Am I?
+              p An application to manage and plan daily tasks
+              p make a daily to do list
+              .source-code
+                a(href="https://github.com/iambenbright/taskman" target="_blank") github
+      if pageId !== "Home"
+        .container
+          .content
+            .content-left
+              h2 Who Am I?
+              p An application to manage and plan daily tasks
+              p make a daily to do list
+              .source-code
+                a(href="https://github.com/iambenbright/taskman" target="_blank") github
+            .content-right
+              block detail

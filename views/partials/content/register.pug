@@ -1,17 +1,22 @@
 extends ../../index
 
 block detail
-  form(class="form" method="POST" autocomplete="off")
+  form(class="form" method="POST")
     h2.form-header #{title}
     .form-style
 
-    //- flash messages
+    //- error messages
     if errors
       .error-messages
         each error in errors
           .error-message
-              p #{error.message}
-            
+            p #{error.message}
+
+    //- success message
+    if success
+      .success-message
+        p Registration completed!, you may log in with your credentials
+
     .form-group
       label(for="name") NAME
       input(type="text" name="name" placeholder="enter name")

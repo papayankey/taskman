@@ -6,6 +6,7 @@ const Database = require("./models/database");
 const schema = require("./models/schema");
 
 const UserModel = require("./models/user");
+const TaskModel = require("./models/task");
 const indexRoute = require("./routes/index");
 const userRoute = require("./routes/user");
 const taskRoute = require("./routes/task");
@@ -25,12 +26,13 @@ Dao.db
 
     // models
     const User = new UserModel(Dao);
+    const Task = new TaskModel(Dao);
 
     // app
     const app = express();
 
     // set app locals to access models
-    app.locals.models = { User };
+    app.locals.models = { User, Task };
 
     // sqlite session store
     const store = new SQLiteStore({
@@ -64,6 +66,7 @@ Dao.db
 
     // 404
     app.use(function(req, res, next) {
+      res.status(404);
       res.render("404", {
         pageId: "404"
       });

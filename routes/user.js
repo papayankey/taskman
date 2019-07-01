@@ -2,7 +2,7 @@ const express = require("express");
 const {
   getRegister,
   getLogin,
-  getRegistrationSuccess,
+  getSignOut,
   postRegister,
   postLogin
 } = require("../controllers/user");
@@ -13,7 +13,7 @@ const router = express.Router();
 // GET
 router.get("/signup", getRegister);
 router.get("/login", getLogin);
-router.get("/account-created", getRegistrationSuccess);
+router.get("/logout", getSignOut);
 
 // POST
 router.post("/signup", postRegister);

@@ -1,27 +1,14 @@
 const express = require("express");
-const { createTask } = require("../controllers/task");
-
-const modifyName = require("../helpers/firstToCapitalize");
+const { getAllTask, createTask, removeTask } = require("../controllers/task");
 
 // express router
 const router = express.Router();
 
 // GET
-router.get("/", async (req, res) => {
-  if (req.session.user) {
-    let { name } = req.session.user;
-    name = await modifyName(name);
-    res.render("task", {
-      pageId: "Task",
-      user: {
-        name
-      }
-    });
-    return;
-  }
+router.get("/", getAllTask);
+router.get("/r/:id", removeTask);
 
-  res.status(401);
-  res.redirect("/user/register");
-});
+// POST
+router.post("/add", createTask);
 
 module.exports = router;

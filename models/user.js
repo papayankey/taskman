@@ -4,17 +4,17 @@ class UserModel {
   }
 
   create(...params) {
-    const sql = `INSERT INTO Users(name, email, password) VALUES (?, ?, ?)`;
+    const sql = `INSERT INTO user(name, email, password) VALUES (?, ?, ?)`;
     return this.dao.run(sql, params);
   }
 
   findById(param) {
-    const sql = `SELECT * FROM Users WHERE Users.id = ?`;
+    const sql = `SELECT * FROM user WHERE user.id = ?`;
     return this.dao.get(sql, param);
   }
 
   findByEmail(param) {
-    const sql = `SELECT * FROM Users WHERE Users.email = ?`;
+    const sql = `SELECT * FROM user WHERE user.email = ?`;
     return this.dao.get(sql, param);
   }
 }

@@ -27,11 +27,12 @@ module.exports = {
       pageId: "Login"
     });
   },
-  getRegistrationSuccess: function(req, res) {
-    res.render("partials/content/register-complete", {
-      title: "Registration completed!",
-      pageId: "Registered"
-    });
+  getSignOut: async function(req, res) {
+    const success = await req.session.destroy();
+    if (success) {
+      res.status(200);
+      res.redirect("/");
+    }
   },
   postRegister: async function(req, res) {
     const models = req.app.locals.models;
@@ -46,7 +47,7 @@ module.exports = {
     } catch (e) {
       res.render("partials/content/register", {
         title: "CREATE ACCOUNT",
-        pageTitle: "Register",
+        pageId: "Register",
         errors: e.details
       });
       return;
@@ -57,12 +58,16 @@ module.exports = {
 
     try {
       await models.User.create(name, email, hashedPassword);
-      res.redirect("./account-created");
+      res.render("partials/content/register", {
+        title: "CREATE ACCOUNT",
+        pageId: "Register",
+        success: true
+      });
       return;
     } catch (e) {
       res.render("partials/content/register", {
         title: "CREATE ACCOUNT",
-        pageTitle: "Register",
+        pageId: "Register",
         errors: [{ message: '"Email" already exists' }]
       });
     }
@@ -80,7 +85,7 @@ module.exports = {
     } catch (e) {
       res.render("partials/content/login", {
         title: "ACCESS ACCOUNT",
-        pageTitle: "Login",
+        pageId: "Login",
         errors: e.details
       });
       return;

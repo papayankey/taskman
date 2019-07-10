@@ -1,0 +1,32 @@
+extends ../../tasks
+
+//- active and completed
+//- task list mixin
+mixin groupTasks(title)
+  .header(style="display: none")
+    .title 
+      h2= title
+      span.title-date
+    .clear-list(data-page=pageExtends data-title=title)
+      p(style="display: none") clear
+  .content(style="display: none")
+    each task in tasks
+      - const now = new Date()
+      - const tDate = new Date(task.updated_at)
+      if tDate.getFullYear() === now.getFullYear() & tDate.getMonth() === now.getMonth() 
+        if title === "today" & tDate.getDate() === now.getDate()
+          include ../template/task
+        if title === "yesterday" & ( now.getDate() - tDate.getDate()) === 1
+          include ../template/task
+        if title ==="past" & ( now.getDate() - tDate.getDate()) > 1
+          include ../template/task
+
+block taskContent
+  //- Today
+  +groupTasks("today")
+  
+  //- Yesterday                  
+  +groupTasks("yesterday")
+  
+  //- Past                  
+  +groupTasks("past")

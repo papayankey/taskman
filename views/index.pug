@@ -3,7 +3,12 @@ html(lang="en")
   head
     include partials/template/head
 
-  body(id="home")
+  if pageId === "Home"
+    - bodyBg = "#4e91da"
+  else 
+    - bodyBg = "ghostwhite"
+
+  body(style={"background-color": bodyBg} id="home")
     //- navbar
     include partials/template/navbar
 
@@ -14,21 +19,34 @@ html(lang="en")
     block content
       if pageId === "Home"
         .container
-          .wrapper
-            div
-              h2 Who Am I?
-              p An application to manage and plan daily tasks
-              p make a daily to do list
-              .source-code
-                a(href="https://github.com/iambenbright/taskman" target="_blank") github
-      if pageId !== "Home"
+          .landing-page
+            .top
+            .middle
+              h2 What Am I?
+              p.
+                An app to simply create daily tasks<br>Increase productivity!
+              .github-link
+                a(href="https://github.com/iambenbright/taskman" target="_blank")
+                  <i class="fa fa-github"></i> github
+            .bottom
+              p made with <i class="fa fa-heart"></i> and <i class="fa fa-coffee"></i> from Ghana
+      else
         .container
-          .content
-            .content-left
-              h2 Who Am I?
-              p An application to manage and plan daily tasks
-              p make a daily to do list
-              .source-code
-                a(href="https://github.com/iambenbright/taskman" target="_blank") github
-            .content-right
-              block detail
+          .auth-page
+            .taskman-info
+              .about-app
+                h2 About
+                p.
+                  Simply create daily task, Increase productivity!
+                  
+                p.
+                  With Taskman, you can:<br>
+                  - create, edit and delete task<br>
+                  - add color bands to task<br>
+                  - set task priority<br>
+                  - view all, active and completed tasks<br>
+                  - redo completed tasks<br>
+                p.
+                  Taskman makes it easy to plan your day and manage your life
+            .auth
+              block authentication

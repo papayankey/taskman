@@ -1,0 +1,47 @@
+//- all tasks mixin
+mixin allTasks(title, completed)
+  .header(style="display: none") 
+    .title 
+      h2= title
+      span.title-date
+    .clear-list(data-page="allTask" data-title=title)
+      p(style="display: none") clear
+  .content(style="display: none")
+    each task in tasks
+      if task.task_completed === completed
+        include partials/template/task
+
+doctype html
+html(lang="en")
+  head
+    include partials/template/head
+
+  body(style={"background-color": "ghostwhite"} id="task")
+
+    //- navbar
+    include partials/template/navbar
+  
+    //- navbar gap fix
+    .gap-fix
+
+    .container
+      .task-page
+        .side-panel
+          .add-btn
+            a add task
+          //- toggle view
+          .sort-list
+            include partials/template/toggleView
+        .task-list
+          if !tasks.length
+            include partials/template/noTask
+          else
+            //- all tasks
+            block taskContent
+              //- active tasks
+              - let completed = 0
+              +allTasks("active", completed)
+
+              //- completed tasks
+              - completed = 1
+              +allTasks("completed", completed)

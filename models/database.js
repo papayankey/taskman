@@ -6,23 +6,32 @@ class Database {
     // connect db
     this.db = new sqlite3.Database(DB_PATH);
 
-    // enable foreign keys
-    this.db.exec("PRAGMA foreign_keys=ON", function(err) {
-      if (err) {
-        console.log("Error turning on foreign keys");
-        return;
+    // pragmas
+    this.db.exec(
+      `
+      PRAGMA foreign_keys=ON;
+      PRAGMA busy_timeout=30000;
+    `,
+      function(err) {
+        if (err) {
+          console.log(err);
+        }
       }
-      console.log("foreign keys enabled!");
-    });
+    );
 
     // create tables
-    this.db.exec(schema, function(err) {
+    this.db.exec(schema.tablesSchema, function(err) {
       if (err) {
         console.log(err);
         console.log("Error creating table");
-        return;
       }
-      console.log("tables created successfully");
+    });
+
+    // tables default inserts
+    this.db.exec(schema.defaultInsert, function(err) {
+      if (err) {
+        console.log(err);
+      }
     });
   }
 
@@ -57,9 +66,9 @@ class Database {
   }
 
   // GET ALL RECORD
-  getAll(sql) {
+  getAll(sql, params = []) {
     return new Promise((resolve, reject) => {
-      this.db.all(sql, function(err, rows) {
+      this.db.all(sql, params, function(err, rows) {
         if (err) {
           reject(err);
         } else {

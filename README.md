@@ -31,4 +31,4 @@ You only need to have **Node Js** installed on your system
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](<[LICENSE.md](https://github.com/iambenbright/taskman/blob/master/LICENSE.md)>) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/iambenbright/taskman/blob/master/LICENSE.md) file for details

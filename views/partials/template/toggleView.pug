@@ -1,0 +1,13 @@
+nav
+  if !pageExtends
+    a(href="../task/all" class="is-active") all
+  else 
+    a(href="../task/all") all
+  if pageExtends === "ActiveTask"
+    a(href="../task" class="is-active") active
+  else 
+    a(href="../task") active
+  if pageExtends === "CompletedTask"
+    a(href="../task/completed" class="is-active") completed
+  else
+    a(href="../task/completed") completed

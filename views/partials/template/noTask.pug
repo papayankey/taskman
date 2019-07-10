@@ -1,0 +1,16 @@
+
+.no-task-container
+  .icon
+    i.fa.fa-tasks
+  if pageExtends === "CompletedTask"
+    .info
+      h3 You have no completed task
+      p add task or view active tasks
+  else if pageExtends === "ActiveTask"
+    .info
+      h3 You have no active task
+      p add task or view completed tasks
+  else
+    .info
+      h3 No Task
+      p what do you want to do today?

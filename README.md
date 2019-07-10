@@ -4,18 +4,18 @@ An app to simply create daily tasks and increase productivity
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+These instructions will get you a copy of the project up and running on your local machine.
 
 ### Prerequisite
 
-You only need to have **Node Js** installed on your system
+You only need to have below installed on your system
 
 - [Node Js](https://nodejs.org/en/download/) - NodeJs download page for all platforms
 
 ### Installing
 
 1. Clone the repo
-   `git clone https:://github.com/your_username_/Project-Name.git`
+   `git clone https://github.com/iambenbright/taskman.git`
 
 2. Install NPM packages
    `npm install`
@@ -28,6 +28,7 @@ You only need to have **Node Js** installed on your system
 - [Express Js](https://expressjs.com/) - The web framework
 - [Pug Js](https://pugjs.org/api/getting-started.html) - Template Engine
 - [Sqlite](https://www.sqlite.org/index.html) - The database
+- [Joi](https://www.npmjs.com/package/@hapi/joi) - The validation library
 
 ## License
 

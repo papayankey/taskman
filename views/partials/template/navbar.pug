@@ -1,13 +1,21 @@
-header
+//- home styles
+if pageId === "Home"
+  - headerStyle = "none"
+  - height = "none"
+else 
+  - headerStyle = "0 2px 6px grey"
+  - height = "100%"
+
+header(style={"box-shadow": headerStyle})
   .container
     .navbar
       p 
         a(href="/") <strong>Task</strong>man
       nav
         if user
-          a(href="/user/logout") Sign out
-          a 
+          a(href="/user/logout" style={height: height}) Sign out
+          a(style={height: height}) 
             strong #{user.name}
         else if !user
-          a(href="/user/signup") Sign up
-          a(href="/user/login") Log in
+          a(href="/user/signup" style={height: height, padding: "10px 15px"}) Sign up
+          a(href="/user/login" style={height: height, padding: "10px 15px"}) Log in

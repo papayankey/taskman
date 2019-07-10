@@ -1,7 +1,7 @@
 extends ../../index
 
-block detail
-  form(class="form" method="POST")
+block authentication
+  form(class="auth-form" method="POST" autocomplete="off")
     h2.form-header #{title}
     .form-style
 
@@ -18,12 +18,12 @@ block detail
         p Registration completed!, you may log in with your credentials
 
     .form-group
-      label(for="name") NAME
-      input(type="text" name="name" placeholder="enter name")
+      label(for="name") Name
+      input(type="text" name="name" autofocus)
     .form-group
-      label(for="email") EMAIL
-      input(type="email" name="email" placeholder="enter email")
+      label(for="email") Email
+      input(type="email" name="email" )
     .form-group
-      label(for="email") PASSWORD
-      input(type="password" name="password" placeholder="enter password")
-    button(type="submit") SUBMIT
+      label(for="email") Password
+      input(type="password" name="password")
+    button(type="submit") SEND

@@ -1,0 +1,56 @@
+//- format date mixin
+mixin formatDate(task)
+  - const tDate = new Date(task.updated_at)
+  - const now = new Date()
+  if tDate.getFullYear() === now.getFullYear() & tDate.getMonth() === now.getMonth() 
+    if tDate.getDate() === now.getDate()
+      - let date = "today"
+      span= date
+    if ( now.getDate() - tDate.getDate()) === 1
+      - let date = "1 day ago"
+      span= date
+    if ( now.getDate() - tDate.getDate()) > 1
+      - let diff = now.getDate() -tDate.getDate()
+      - let date = `${diff} days ago`
+      span= date
+
+
+.task(style={"border-left": `4px solid ${task.band_hex}`})
+  .top
+    p #{task.task_text}
+    - priority = task.priority_value
+    if priority === "low"
+      - priority = "L"
+    if priority === "normal"
+      - priority = "N"
+    if priority === "high"
+      - priority = "H"
+    if priority === "none"
+      - priority = ""
+    .priority(style={display: "none", "box-shadow": "none"})
+      if priority.length
+        p= priority
+  .bottom
+    +formatDate(task)
+    .actions
+      .complete(
+        data-id=task.task_id 
+        data-completed=task.task_completed
+      )
+        a
+          if task.task_completed
+            i.fa.fa-undo
+          else
+            i.fa.fa-check
+      .edit(
+        data-id=task.task_id 
+        data-text=task.task_text 
+        data-band=task.band_id 
+        data-priority=task.priority_id 
+        data-completed=task.task_completed
+      )
+        a
+          i.fa.fa-pencil
+      .delete(data-id=`${task.task_id}`)
+        a
+          i.fa.fa-remove

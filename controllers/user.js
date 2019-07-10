@@ -11,7 +11,7 @@ module.exports = {
     }
 
     res.render("partials/content/register", {
-      title: "CREATE ACCOUNT",
+      title: "Sign up",
       pageId: "Register"
     });
   },
@@ -23,7 +23,7 @@ module.exports = {
     }
 
     res.render("partials/content/login", {
-      title: "ACCESS ACCOUNT",
+      title: "Sign in",
       pageId: "Login"
     });
   },
@@ -46,7 +46,7 @@ module.exports = {
       });
     } catch (e) {
       res.render("partials/content/register", {
-        title: "CREATE ACCOUNT",
+        title: "Sign up",
         pageId: "Register",
         errors: e.details
       });
@@ -59,14 +59,14 @@ module.exports = {
     try {
       await models.User.create(name, email, hashedPassword);
       res.render("partials/content/register", {
-        title: "CREATE ACCOUNT",
+        title: "Sign up",
         pageId: "Register",
         success: true
       });
       return;
     } catch (e) {
       res.render("partials/content/register", {
-        title: "CREATE ACCOUNT",
+        title: "Sign up",
         pageId: "Register",
         errors: [{ message: '"Email" already exists' }]
       });
@@ -84,7 +84,7 @@ module.exports = {
       });
     } catch (e) {
       res.render("partials/content/login", {
-        title: "ACCESS ACCOUNT",
+        title: "Sign in",
         pageId: "Login",
         errors: e.details
       });
@@ -95,7 +95,7 @@ module.exports = {
       const renderError = () => {
         res.status(500);
         res.render("partials/content/login", {
-          title: "ACCESS ACCOUNT",
+          title: "Sign in",
           pageTitle: "Login",
           errors: [{ message: "Email or password incorrect" }]
         });

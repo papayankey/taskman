@@ -2,14 +2,15 @@ const express = require("express");
 const session = require("express-session");
 const SQLiteStore = require("connect-sqlite3")(session);
 const path = require("path");
+
 const Database = require("./models/database");
 const schema = require("./models/schema");
-
 const UserModel = require("./models/user");
 const TaskModel = require("./models/task");
 const indexRoute = require("./routes/index");
 const userRoute = require("./routes/user");
 const taskRoute = require("./routes/task");
+const authenticate = require("./middleware/auth");
 
 // environment variables
 const { DB_PATH, APP_PORT, SESSION_NAME, SESSION_SECRET } = require("./config");
@@ -22,7 +23,7 @@ Dao.db
     console.log(error.message);
   })
   .on("open", async () => {
-    console.log("Database connection successful");
+    console.log("Database connected");
 
     // models
     const User = new UserModel(Dao);
@@ -62,15 +63,14 @@ Dao.db
     // routes
     app.use("/", indexRoute);
     app.use("/user", userRoute);
-    app.use("/task", taskRoute);
+    app.use("/task", authenticate, taskRoute);
 
     // 404
     app.use(function(req, res, next) {
       res.status(404);
-      res.render("404", {
+      res.render("error", {
         pageId: "404"
       });
-      return;
     });
 
     // listen to port

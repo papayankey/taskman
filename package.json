@@ -23,7 +23,7 @@
     "connect-sqlite3": "^0.9.11",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
-    "express-session": "^1.16.2",
+    "express-session": "^1.17.1",
     "pug": "^2.0.3",
     "sqlite3": "^4.0.9"
   },

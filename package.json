@@ -19,7 +19,7 @@
   "homepage": "https://github.com/iambenbright/taskman#readme",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "connect-sqlite3": "^0.9.11",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
